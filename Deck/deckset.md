@@ -12,7 +12,7 @@ theme: Ostrich, 1
 
 ---
 
-# Domain Specific Languages!
+# Domain Specific Languages
 
 ![](https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif)
 
@@ -54,6 +54,10 @@ theme: Ostrich, 1
 
 ---
 
+![inline](https://github.com/rahul-malik/writing-dsls/raw/master/Deck/Resources/c-dsl.png)
+
+---
+
 ## Functional Languages
 
 - Strong type system
@@ -69,11 +73,14 @@ theme: Ostrich, 1
 - Build modular / composable abstractions
 - Work iteratively
 
+---
+
+## **PIN**Core
+
 
 ---
 
 ## swift package init
-
 
 ---
 
@@ -265,7 +272,7 @@ func ls(_ item: DirectoryItem, _ path: String) {
 ---
 
 # Plank
-![inline 50%](https://cdn-images-1.medium.com/max/1600/1*Bgfy3LbWkhMWOR2SYTlzPQ.png)
+![inline 80%](https://cdn-images-1.medium.com/max/1600/1*Bgfy3LbWkhMWOR2SYTlzPQ.png)
 
 ---
 
