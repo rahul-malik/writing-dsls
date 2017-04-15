@@ -1,8 +1,13 @@
 theme: Ostrich, 1
 
+![](https://github.com/rahul-malik/writing-dsls/raw/master/Deck/Resources/title-slide.jpeg)
+
+
+<!---
 ## Writing Domain Specific Languages
 
 ### Rahul Malik (@rmalik)
+-->
 
 ---
 
@@ -731,8 +736,10 @@ func renderArgument(arg: InputArgument) -> String {
 typealias FieldSelection<T> = () -> [T]
 
 enum QueryRoot {
-    case repository(owner: String, name: String, FieldSelection<RepositoryField>)
-	// Other root objects...
+    case repository(owner: String,
+                    name: String,
+                    FieldSelection<RepositoryField>)
+	// Other root cases...
 }
 ```
 
