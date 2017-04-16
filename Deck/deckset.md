@@ -1,13 +1,12 @@
 theme: Ostrich, 1
 
-![](https://github.com/rahul-malik/writing-dsls/raw/master/Deck/Resources/title-slide.jpeg)
+![](https://github.com/rahul-malik/writing-dsls/raw/master/Deck/Resources/cover-slide.jpeg)
 
+---
 
-<!---
 ## Writing Domain Specific Languages
 
 ### Rahul Malik (@rmalik)
--->
 
 ---
 
@@ -242,10 +241,9 @@ func createFiles(atPath path: String, rootDirectory item: DirectoryItem) {
 func createFiles(atPath path: String, rootDirectory item: DirectoryItem) {
 	switch item {
 	case .File(name: let name, contents: let contents):
-		writeFile(contents: contents, atPath: Path(name))
+		writeFile(contents: contents, atPath: Path(path + name))
 	case .Folder(name: let name, items: let subdirs):
 		c.mkdir(name)
-		c.gitkeep(name)
 		let newPath = path + "/\(name)"
 		c.currentDirectory = newPath
 		_ = subdirs.map { createFiles(atPath: newPath, rootDirectory: d) }
@@ -395,7 +393,7 @@ ifElseStmt("i <= 2") {[
 
 ---
 
-# Higher Order Functions!
+# Higher Order Functions
 
 ---
 

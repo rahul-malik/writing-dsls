@@ -3,6 +3,6 @@
     <pages>
         <page name='Page 1 - SPM'/>
         <page name='Page 2 - Code Generation'/>
-        <page name='GQL'/>
+        <page name='Page 3 - GraphQL'/>
     </pages>
 </playground>

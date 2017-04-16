@@ -1,3 +1,4 @@
+//: Deep DSL for defining File Hierarchies
 import Foundation
 
 enum DirectoryItem {
@@ -32,6 +33,6 @@ func ls(_ item: DirectoryItem, _ path: String = "") {
     }
 }
 
-// ls(package)
+ls(package)
 
 //: [Previous](@previous) [Next](@next)

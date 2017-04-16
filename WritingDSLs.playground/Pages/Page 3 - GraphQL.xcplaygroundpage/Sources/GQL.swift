@@ -129,11 +129,10 @@ public func query(_ fields: () -> [QueryRoot]) -> String {
     "}"
 }
 
-func createGQLRequest(query: String) -> URLRequest {
-    let GHToken = "3b62f5915226de4fb8dcb7f0c84a621ef6a340f9"
+func createGQLRequest(token: String, query: String) -> URLRequest {
     var req = URLRequest(url: URL(string: "https://api.github.com/graphql")!)
     req.httpMethod = "POST"
-    req.setValue("bearer \(GHToken)", forHTTPHeaderField: "Authorization")
+    req.setValue("bearer \(token)", forHTTPHeaderField: "Authorization")
     req.httpBody = try? JSONSerialization.data(withJSONObject: ["query" : query], options:[])
     req.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     return req
@@ -152,9 +151,10 @@ func JSONStringify(value: AnyObject) -> String {
 }
 
 
-public func loadQuery(query: String,
+public func loadQuery(token: String,
+                      query: String,
                       callback: @escaping (Any) -> Void) {
-    let dataTask = URLSession.shared.dataTask(with: createGQLRequest(query: query)) { (data, response, err) in
+    let dataTask = URLSession.shared.dataTask(with: createGQLRequest(token: token, query: query)) { (data, response, err) in
         if let responseData = data {
             if let responseObj = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
                 DispatchQueue.main.async {
