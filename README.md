@@ -1,6 +1,11 @@
 # Writing Domain Specific Languages
 ## Functional Swift Conference 2017
 
+## Video
+[![Writing Domain Specific Languages - Functional Swift 2017](https://img.youtube.com/vi/YLeaRtB3GfY/0.jpg)](https://www.youtube.com/watch?v=YLeaRtB3GfY)
+
+[Writing Domain Specific Languages - Functional Swift 2017](https://www.youtube.com/watch?v=YLeaRtB3GfY)
+
 ## Abstract
 > A Domain Specific Language (DSL) is a computer programming language of limited expressiveness focused on a particular domain. Most languages you hear of are General Purpose Languages, which can handle most things you run into during a software project. Each DSL can only handle one specific aspect of a system.
 
