@@ -9,10 +9,10 @@ import PlaygroundSupport
 let GithubToken = "OAUTH TOKEN HERE"
 
 //: Here is the base of our query. The types are defined in `GQL.swift` which is in the sources directory of this page. You can modify the RepositoryField, UserField, IssueField enum to add additional fields and relationships that are present on in the [query documentation](https://developer.github.com/early-access/graphql/object/query/)
+
 let q = query {[
     .repository(owner: "pinterest", name: "plank") {[
         .name,
-        .homepageURL,
         .description
     ]}
 ]}
@@ -27,5 +27,6 @@ loadQuery(token: GithubToken, query: q) { text in
 }
 
 PlaygroundPage.current.needsIndefiniteExecution = true
+
 
 //: [Previous](@previous)

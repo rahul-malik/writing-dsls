@@ -45,14 +45,14 @@ public enum QueryRoot {
 public enum RepositoryField {
     case name
     case description
-    case homepageURL
+    case homepageUrl
     case owner(FieldSelection<UserField>)
     case issues(first: Int, FieldSelection<Connection<IssueField>>)
 }
 
 public enum UserField {
     case login
-    case avatarURL
+    case avatarUrl
 }
 
 public enum IssueField {
@@ -101,7 +101,7 @@ extension Connection: NodeRenderer {
 extension UserField: NodeRenderer {
     public func renderNode() -> Node {
         switch self {
-        case .avatarURL, .login:
+        case .avatarUrl, .login:
             return .Scalar(label: "\(self)")
         }
     }
@@ -110,7 +110,7 @@ extension UserField: NodeRenderer {
 extension RepositoryField: NodeRenderer {
     public func renderNode() -> Node {
         switch self {
-        case .name, .description, .homepageURL:
+        case .name, .description, .homepageUrl:
             return Node.Scalar(label: "\(self)")
         case .owner(let fieldsFn):
             return Node.Object(label: "owner", arguments: nil, fields:fieldsFn().map { $0.renderNode() })

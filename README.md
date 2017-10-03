@@ -1,5 +1,8 @@
 # Writing Domain Specific Languages
-## Functional Swift Conference 2017
+
+## Presented at:
+- Functional Swift Conference - Brooklyn, NY 2017
+- Mobiconf - Krakow, Poland 2017
 
 ## Video
 [![Writing Domain Specific Languages - Functional Swift 2017](https://img.youtube.com/vi/YLeaRtB3GfY/0.jpg)](https://www.youtube.com/watch?v=YLeaRtB3GfY)
@@ -9,13 +12,13 @@
 ## Abstract
 > A Domain Specific Language (DSL) is a computer programming language of limited expressiveness focused on a particular domain. Most languages you hear of are General Purpose Languages, which can handle most things you run into during a software project. Each DSL can only handle one specific aspect of a system.
 
-Domain specific languages allow us to create an ideal environment for solving a specific problem. In this talk we’ll discuss how to use various language features like recursive enums, trailing closures and higher order functions to create elegant and type-safe domain specific languages. 
+Domain specific languages allow us to create an ideal environment for solving a specific problem. In this talk we’ll discuss how to use various language features like recursive enums, trailing closures and higher order functions to create elegant and type-safe domain specific languages.
 
 We will go through real-world problems we encountered at Pinterest and will end by building a domain specific language for crafting type-safe GraphQL queries using the Github API.
 
 ## Playground
 
-The examples I covered in the presentation are all available as pages in the [WritingDSLs](https://github.com/rahul-malik/writing-dsls/tree/master/WritingDSLs.playground) playground. 
+The examples I covered in the presentation are all available as pages in the [WritingDSLs](https://github.com/rahul-malik/writing-dsls/tree/master/WritingDSLs.playground) playground.
 
 ### Contents
 - Page 1: File Hierarchies

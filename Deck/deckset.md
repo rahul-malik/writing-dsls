@@ -4,9 +4,18 @@ theme: Ostrich, 1
 
 ---
 
-## Writing Domain Specific Languages
+- 50 Engineers
 
-### Rahul Malik (@rmalik)
+---
+
+- 50 Engineers
+- 690k LOC
+
+---
+
+- 50 Engineers
+- 690k LOC
+- Commit lands every 7 minutes
 
 ---
 
@@ -19,6 +28,15 @@ theme: Ostrich, 1
 # Domain Specific Languages
 
 ![](https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif)
+
+---
+
+## Writing Domain Specific Languages
+
+### Rahul Malik (@rmalik)
+
+## Mobiconf
+
 
 ---
 
@@ -438,7 +456,7 @@ It’s an alternative to the traditional RESTful endpoints.
   repository(owner:"pinterest", name:"plank") { // Repo
     name,
     description,
-    homepageURL
+    homepageUrl
   }
 }
 ```
@@ -451,9 +469,9 @@ It’s an alternative to the traditional RESTful endpoints.
   repository(owner:"pinterest", name:"plank") { // Repo
     name,
     description,
-    homepageURL,
+    homepageUrl,
     owner { // User
-      avatarURL
+      avatarUrl
     }
 }
 ```
@@ -466,9 +484,9 @@ It’s an alternative to the traditional RESTful endpoints.
   repository(owner:"pinterest", name:"plank") { // Repo
     name,
     description,
-    homepageURL,
+    homepageUrl,
     owner { // User
-      avatarURL
+      avatarUrl
     },
     issues(first:10) { // Issues
       nodes {
@@ -490,9 +508,9 @@ It’s an alternative to the traditional RESTful endpoints.
     "repository": {
       "name": "plank",
       "description": "A tool for generating immutable model objects",
-      "homepageURL": "https://pinterest.github.io/plank/",
+      "homepageUrl": "https://pinterest.github.io/plank/",
       "owner": {
-        "avatarURL": "https://avatars1.githubusercontent.com/u/541152?v=3"
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/541152?v=3"
       },
       "issues": {
         "nodes": [
@@ -528,9 +546,9 @@ let query = [
     "  repository(owner:\"pinterest\", name:\"plank\") {",
     "    name,",
     "    description,",
-    "    homepageURL,",
+    "    homepageUrl,",
     "    owner {",
-    "      avatarURL",
+    "      avatarUrl",
     "    }",
     "    issues(first:10) {",
     "      nodes {",
@@ -559,7 +577,7 @@ repository(owner: "pinterest", name: "plank") {
 	name,
 	description,
 	owner {
-	    avatarURL
+	    avatarUrl
 	}
 }
 ```
@@ -584,7 +602,7 @@ object(arguments) {
 
 ```swift
 enum Node {
-    case Scalar(label: String)
+    case Field(label: String)
     indirect case Object(label: String, arguments: [InputArgument]?, fields:[Node])
 }
 
@@ -603,9 +621,9 @@ typealias InputArgument = (String, InputType)
 ```swift
 .Object(label: "repository",
         arguments: [("owner", .string("pinterest")), ("name", .string("plank"))],
-        fields: [.Scalar(label: "name"),
-                 .Scalar(label: "description"),
-                 .Scalar(label: "homepageURL"),
+        fields: [.Field(label: "name"),
+                 .Field(label: "description"),
+                 .Field(label: "homepageUrl"),
         ]
 )
 ```
@@ -617,12 +635,12 @@ typealias InputArgument = (String, InputType)
 ```swift
 .Object(label: "repository",
         arguments: [("owner", .string("pinterest")), ("name", .string("plank"))],
-        fields: [.Scalar(label: "name"),
-                 .Scalar(label: "description"),
-                 .Scalar(label: "homepageURL"),
+        fields: [.Field(label: "name"),
+                 .Field(label: "description"),
+                 .Field(label: "homepageUrl"),
                  .Object(label: "owner",
                         arguments: nil,
-                        fields: [.Scalar(label: "avatarURL")]),
+                        fields: [.Field(label: "avatarUrl")]),
         ]
 )
 ```
@@ -635,19 +653,19 @@ typealias InputArgument = (String, InputType)
 ```swift
 .Object(label: "repository",
         arguments: [("owner", .string("pinterest")), ("name", .string("plank"))],
-        fields: [.Scalar(label: "name"),
-                 .Scalar(label: "description"),
-                 .Scalar(label: "homepageURL"),
+        fields: [.Field(label: "name"),
+                 .Field(label: "description"),
+                 .Field(label: "homepageUrl"),
                  .Object(label: "owner",
                         arguments: nil,
-                        fields: [.Scalar(label: "avatarURL")]),
+                        fields: [.Field(label: "avatarUrl")]),
                  .Object(label: "issues",
                          arguments: [("first", .integer(10))],
                          fields: [
                              .Object(label: "nodes",
                                      arguments: nil,
-                                     fields: [.Scalar(label: "title"),
-                                              .Scalar(label: "state")])
+                                     fields: [.Field(label: "title"),
+                                              .Field(label: "state")])
                          ])
         ]
 )
@@ -655,12 +673,12 @@ typealias InputArgument = (String, InputType)
 
 ---
 
-## Node -> Query String : Scalar
+## Node -> Query String : Field
 
 ```swift
 func renderQueryString(node: Node) -> String {
 	switch node {
-	case .Scalar(label: let label):
+	case .Field(label: let label):
 		return label
     }
 }
@@ -673,7 +691,7 @@ func renderQueryString(node: Node) -> String {
 ```swift
 func renderQueryString(node: Node) -> String {
 	switch node {
-	case .Scalar(label: let label):
+	case .Field(label: let label):
 		return label
 	case .Object(label: let label, arguments: .none, fields: let fields):
 		// Object without arguments
@@ -690,7 +708,7 @@ func renderQueryString(node: Node) -> String {
 ```swift
 func renderQueryString(node: Node) -> String {
 	switch node {
-	case .Scalar(label: let label):
+	case .Field(label: let label):
 		return label
 	case .Object(label: let label, arguments: .none, fields: let fields):
 		// Object without arguments
@@ -747,14 +765,14 @@ enum QueryRoot {
 enum RepositoryField {
     case name
     case description
-    case homepageURL
+    case homepageUrl
     case owner(FieldSelection<UserField>)
     case issues(first: Int, FieldSelection<IssueField>)
 }
 
 enum UserField {
     case login
-    case avatarURL
+    case avatarUrl
 }
 
 enum IssueField {
@@ -773,7 +791,7 @@ enum IssueField {
 	.description,
 	.owner {[
 		.login,
-		.avatarURL
+		.avatarUrl
 	]},
 	.issues(first: 10) {[
 		.nodes {[
@@ -855,6 +873,7 @@ func query(_ fields: FieldSelection<QueryRoot>) -> String {
 # Thank you!
 
 ## @rmalik
+### github.com/rahul-malik
 ![](https://media.giphy.com/media/wpoLqr5FT1sY0/giphy.gif)
 
 ---
